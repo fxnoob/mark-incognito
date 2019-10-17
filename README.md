@@ -47,4 +47,4 @@ Creating a chrome and firefox extension which will all users to quickly mark a d
 
 - Browser extension will have a list of all marked domains, with easy remove list option.
 
-- It will also give you a BIG button to mark and remove the current visited domain, why because why not ??
+- It will also give you a BIG button to mark and remove the current visited domain.
