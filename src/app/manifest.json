@@ -1,24 +1,30 @@
 {
-  "name": "Swipe hand in the air",
+  "name": "mark-incognito",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "swipe hand gesture recognition",
+  "description": "open any url in incognito by default",
   "icons": {
     "16": "images/icon-16.png",
     "128": "images/icon-128.png"
   },
-  "default_locale": "en",
   "background": {
     "scripts": ["background.bundle.js"]
   },
-  "permissions": ["history", "webNavigation", "*://*/*"],
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "storage",
+    "contextMenus"
+  ],
+  "incognito": "spanning",
   "browser_action": {
     "default_icon": {
       "19": "images/icon-19.png",
       "38": "images/icon-38.png"
     },
-    "default_title": "history remover",
-    "default_popup": "popup.html"
+    "default_title": "open any url in incognito by default"
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
