@@ -9,8 +9,8 @@ class ChromeApi {
     return new Promise(resolve => {
       chrome.tabs.get(tabId, (tab) => {
         resolve(tab);
-      })
-    })
+      });
+    });
   }
 
   createIncognitoWindow = () => {
@@ -25,8 +25,8 @@ class ChromeApi {
     return new Promise((resolve, reject)=> {
       chrome.windows.get(winId, (info) => {
         resolve(info);
-      })
-    })
+      });
+    });
   }
 
   onIncognitoWindowClosed = winId => {
