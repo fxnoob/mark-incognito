@@ -11,12 +11,12 @@ export class Schema {
     };
   }
 }
+
 export default class Db {
   /*
    * set values in db
    * input - {key: value}
    * */
-
   set(params) {
     return new Promise((resolve, reject) => {
       try {
@@ -28,6 +28,7 @@ export default class Db {
       }
     });
   }
+  
   /*
    * get values from db
    * input - [key1,key2]
