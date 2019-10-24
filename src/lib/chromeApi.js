@@ -116,7 +116,7 @@ class ChromeApi {
   openHelpPage = () => {
     let helpTabIsOpened = false;
     let activeTabId = -1;
-    const helpUrl = chrome.extension.getURL("option.html") + "?page=help";
+    const helpUrl = chrome.runtime.getURL("option.html") + "?page=help";
     chrome.tabs.query({}, tabs => {
       for (let i = 0; i < tabs.length; i++) {
         if (tabs[i].url === helpUrl) {
