@@ -33,7 +33,7 @@ export default class Db {
    * get values from db
    * input - [key1,key2]
    * */
-  get(...params) {
+  get(params) {
     return new Promise((resolve, reject) => {
       try {
         chrome.storage.local.get(params, items => {
