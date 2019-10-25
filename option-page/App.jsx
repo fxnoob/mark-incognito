@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import './App.css'
 import Index from './components/'
 
 const Element = document.createElement("div");
