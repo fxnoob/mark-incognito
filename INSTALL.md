@@ -12,4 +12,4 @@
 
 `Note:` make sure extension is enabled in incognito mode.
 
-[![N|Solid](https://raw.githubusercontent.com/fxnoob/mark-incognito/master/screens/screen.png)](https://github.com/fxnoob/mark-incognito)
+[![N|Solid](https://raw.githubusercontent.com/fxnoob/mark-incognito/master/screens/install.png)](https://github.com/fxnoob/mark-incognito)
