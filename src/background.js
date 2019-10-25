@@ -27,36 +27,54 @@ class Main extends ChromeApi {
       types: types
     };
 
-    chrome.webRequest.onBeforeRequest.addListener(this.redirect, filter, [
-      "blocking"
-    ]);
+    chrome.webRequest.onBeforeRequest.addListener(this.redirect, filter, ["blocking"]);
+    chrome.webRequest.onCompleted.addListener(this.redirectOnComplete, filter, ["responseHeaders"])
   };
 
-  redirect = async details => {
-    console.log({ details });
-    let url = details.url;
-    const tab = await this.getTabInfo(details.tabId);
-    const currentWindow = await this.getWindow(tab.windowId);
-    if (currentWindow.incognito === true)
-      return {
-        redirectUrl: url
-      };
-    else {
+  /**
+   * Performs a check on the requested url to see if it marked as Incognito
+   *
+   * @param {object} details Details object provided by `chrome.webRequest.*` methods
+   * @param {function} callback Callback that run if url is marked as Incognito
+   * @memberof Main
+   */
+  performURLChecks = async (details, callback) => {
+    const { url, tabId } = details
+
+    const { windowId } = await this.getTabInfo(tabId);
+    const currentWindow = await this.getWindow(windowId);
+
+    if (!currentWindow.incognito) {
       const isUrlIncognito = await db.get(url);
       if (isUrlIncognito.hasOwnProperty(url)) {
-        await this.createIncognitoTab({ url: url });
-        return {
-          redirectUrl: details.hasOwnProperty("initiator")
-            ? details.initiator
-            : ""
-        };
-      } else {
-        return {
-          redirectUrl: url
-        };
+        callback();
       }
     }
+  }
+
+  /**
+   * Creates a new tab if a Incognito URL is requested
+   *
+   * @param {object} details Details object provided by `chrome.webRequest.onBeforeRequest` method
+   * @memberof Main
+   */
+  redirect = async details => {
+    this.performURLChecks(details, async () => {
+      await this.createIncognitoTab({ url: details.url });
+    })
   };
+
+  /**
+   * Goes back if a Incognito marked URL has been navigated to
+   *
+   * @param {object} details Details object provided by `chrome.webRequest.onCompleted` method
+   * @memberof Main
+   */
+  redirectOnComplete = async details => {
+    this.performURLChecks(details, () => {
+      chrome.tabs.goBack(details.tabId);
+    })
+  }
 
   initContextMenu = () => {
     if (this.ctxMenuId) return;
