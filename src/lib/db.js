@@ -28,12 +28,12 @@ export default class Db {
       }
     });
   }
-  
+
   /*
    * get values from db
    * input - [key1,key2]
    * */
-  get(params) {
+  get(...params) {
     return new Promise((resolve, reject) => {
       try {
         chrome.storage.local.get(params, items => {
@@ -47,6 +47,24 @@ export default class Db {
         reject(e);
       }
     });
+  }
+  /*
+  * get all data
+  * */
+  getAll = () => {
+    return new Promise((resolve,reject) => {
+      try {
+        chrome.storage.local.get(null, items => {
+          if (items === undefined) {
+            reject(new Error("Error"));
+          } else {
+            resolve(items);
+          }
+        });
+      } catch (e) {
+        reject(e);
+      }
+    })
   }
   /*
    * delete key from db

@@ -1,24 +1,26 @@
 import React from 'react';
 import Db from "../../src/lib/db";
 
+
+const db = new Db();
+
 export default class Index extends React.Component {
   constructor(props) {
     super(props);
-    this.db = new Db();
     this.state = {
       urlList: []
     }
   }
 
   fetchAllUrls = async () => {
-    let data = await this.db.get(null);
+    let data = await db.getAll();
     this.setState({
       urlList: Object.keys(data)
     });
   }
 
   deleteUrlEntry = async (url) => {
-    let res = await this.db.remove(url);
+    let res = await db.remove(url);
     this.fetchAllUrls();
   }
 
@@ -29,13 +31,13 @@ export default class Index extends React.Component {
   render() {
     return (
       <div>
-        <h3>Mark Incognito Options Page</h3>
+        <h3 style={{textAlign: 'center'}}>Mark Incognito </h3>
         <table>
           <thead>
             <tr>
               <th>Id</th>
-              <th>Url</th>
-              <th>Active</th>
+              <th>Url [marked for Incognito]</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -52,6 +54,9 @@ export default class Index extends React.Component {
           }
           </tbody>
         </table>
+        <p style={{textAlign: 'center'}}>
+          Made with <span style={{color: '#e25555'}}>&#9829;</span>
+        </p>
       </div>
     );
   }

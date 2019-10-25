@@ -14,6 +14,10 @@ module.exports = {
         use: ["babel-loader"]
       },
       {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           "file-loader",
@@ -29,7 +33,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ["*", ".js", ".jsx",".css"]
   },
   output: {
     path: __dirname + "/dist",
