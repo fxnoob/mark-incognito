@@ -55,7 +55,7 @@ export default class Index extends React.Component {
           </tbody>
         </table>
         <p style={{textAlign: 'center'}}>
-          Made with <span style={{color: '#e25555'}}>&#9829;</span>
+          Made with <span style={{color: '#e25555', content: "\\2661", textDecoration:'underline'}}>Love</span>
         </p>
       </div>
     );
