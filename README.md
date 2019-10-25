@@ -45,7 +45,7 @@ Creating a chrome and firefox extension which will all users to quickly mark a d
 
 ## Current Feature Set ?
 
-- Mark as incognito will be an option in the right click menu on links as well as can be done for the current domain from the extension icon in the brower menu tab.
+- Mark as incognito will be an option in the right click menu on links as well as can be done for the current domain from the extension icon in the browser menu tab.
 
 - Browser extension will have a list of all marked domains, with easy remove list option.
 
