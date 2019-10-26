@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev": "webpack --watch --progress --colors --config webpack.config.js --mode=development",
-    "test": "webpack --progress --colors --config webpack.config.js --mode=production"
+    "test": "webpack --progress --colors --config webpack.config.js --mode=production",
+    "jsdoc": "./node_modules/.bin/jsdoc src -r",
+    "build": "webpack -p --mode production"
   },
   "husky": {
     "hooks": {
@@ -28,6 +30,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "file-loader": "^4.2.0",
     "image-webpack-loader": "^5.0.0",
+    "jsdoc": "~3.6.3",
     "prettier": "1.18.2",
     "react-hot-loader": "^4.12.10",
     "webpack": "^4.39.1",
@@ -39,7 +42,10 @@
     "@babel/runtime": "^7.5.5",
     "@material-ui/core": "^4.3.3",
     "@material-ui/icons": "^4.2.1",
+    "css-loader": "^3.2.0",
+    "lottie-react-web": "^2.1.4",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "style-loader": "^1.0.0"
   }
 }
