@@ -1,6 +1,6 @@
 {
-  "name": "mark-incognito",
-  "version": "0.0.1",
+  "name": "Mark Incognito",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "open any url in incognito by default",
   "icons": {
