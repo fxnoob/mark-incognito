@@ -43,14 +43,6 @@ export default class Db {
       }
     });
   }
-<<<<<<< HEAD
-  
-  /*
-   * get values from db
-   * input - [key1,key2]
-   * */
-  get(params) {
-=======
 
   /**
    * Get a value from storage
@@ -60,7 +52,6 @@ export default class Db {
    * @memberof Db
    */
   get(...params) {
->>>>>>> 21e447a066875821543bdbe798881eabbd3c7eb4
     return new Promise((resolve, reject) => {
       try {
         chrome.storage.local.get(params, items => {
