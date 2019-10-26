@@ -4,6 +4,12 @@ import Db from "./lib/db";
 
 const db = new Db();
 
+/**
+ * Main extension functionality
+ *
+ * @class Main
+ * @extends {ChromeApi}
+ */
 class Main extends ChromeApi {
   constructor() {
     super();

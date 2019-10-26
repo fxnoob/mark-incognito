@@ -1,3 +1,9 @@
+/**
+ * Schema class object
+ *
+ * @export
+ * @class Schema
+ */
 export class Schema {
   constructor() {
     this.data = {
@@ -12,11 +18,20 @@ export class Schema {
   }
 }
 
+/**
+ * Chrome storage abstraction class
+ *
+ * @export
+ * @class Db
+ */
 export default class Db {
-  /*
-   * set values in db
-   * input - {key: value}
-   * */
+  /**
+   * Set a value in storage
+   *
+   * @param {object} params  key/value pair to be saved
+   * @returns {Promise}
+   * @memberof Db
+   */
   set(params) {
     return new Promise((resolve, reject) => {
       try {
@@ -29,10 +44,13 @@ export default class Db {
     });
   }
 
-  /*
-   * get values from db
-   * input - [key1,key2]
-   * */
+  /**
+   * Get a value from storage
+   *
+   * @param {(string[]|string)} params Array of or single key
+   * @returns {Promise}
+   * @memberof Db
+   */
   get(...params) {
     return new Promise((resolve, reject) => {
       try {
@@ -48,6 +66,7 @@ export default class Db {
       }
     });
   }
+
   /*
   * get all data
   * */
@@ -66,10 +85,14 @@ export default class Db {
       }
     })
   }
-  /*
-   * delete key from db
-   * input - [key1,key2] or string
-   * */
+
+  /**
+   * Removes a value from storage
+   *
+   * @param {(string[]|string)} keyStr Array of or single key
+   * @returns {Promise}
+   * @memberof Db
+   */
   remove(keyStr) {
     return new Promise((resolve, reject) => {
       try {
