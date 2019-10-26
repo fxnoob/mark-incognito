@@ -67,6 +67,25 @@ export default class Db {
     });
   }
 
+  /*
+  * get all data
+  * */
+  getAll = () => {
+    return new Promise((resolve,reject) => {
+      try {
+        chrome.storage.local.get(null, items => {
+          if (items === undefined) {
+            reject(new Error("Error"));
+          } else {
+            resolve(items);
+          }
+        });
+      } catch (e) {
+        reject(e);
+      }
+    })
+  }
+
   /**
    * Removes a value from storage
    *

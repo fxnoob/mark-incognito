@@ -67,7 +67,7 @@ class Main extends ChromeApi {
   initContextMenu = () => {
     if (this.ctxMenuId) return;
     this.ctxMenuId = chrome.contextMenus.create({
-      title: "IW %s",
+      title: "MI %s",
       contexts: ["link"],
       onclick: this.onContextMenuClick
     });

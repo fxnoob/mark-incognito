@@ -42,7 +42,7 @@ class ChromeApi {
 
   createIncognitoTab = async obj => {
     if (!this.win) this.win = await this.createIncognitoWindow();
-    chrome.windows.update(this.win.id, {focused: true})
+    chrome.windows.update(this.win.id, {focused: true});
     chrome.tabs.create({
       ...obj,
       selected: true,
@@ -74,6 +74,7 @@ class ChromeApi {
 
   shiftToLeftTab = () => {
     this.traverseTabs(tabs => {
+      console.log(tabs, tabs.length, 'tabs info');
       let activeTabIndex = -1;
       for (let i = 0; i < tabs.length; i++) {
         if (tabs[i].active) {
