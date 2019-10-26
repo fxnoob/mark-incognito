@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev": "webpack --watch --progress --colors --config webpack.config.js --mode=development",
-    "test": "webpack --progress --colors --config webpack.config.js --mode=production"
+    "test": "webpack --progress --colors --config webpack.config.js --mode=production",
+    "jsdoc": "./node_modules/.bin/jsdoc src -r"
   },
   "husky": {
     "hooks": {
@@ -28,6 +29,7 @@
     "copy-webpack-plugin": "^5.0.4",
     "file-loader": "^4.2.0",
     "image-webpack-loader": "^5.0.0",
+    "jsdoc": "~3.6.3",
     "prettier": "1.18.2",
     "react-hot-loader": "^4.12.10",
     "webpack": "^4.39.1",
