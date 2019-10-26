@@ -1,3 +1,8 @@
+/**
+ * Abstraction class to interact with the chrome extension API
+ *
+ * @class ChromeApi
+ */
 class ChromeApi {
 
   constructor() {
