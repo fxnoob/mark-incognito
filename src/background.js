@@ -107,8 +107,12 @@ class Main extends ChromeApi {
    * @memberof Main
    */
   onContextMenuClick = (info, tab) => {
-    db.set({ [info.linkUrl]: true });
-    console.log(info.linkUrl);
+    chrome.extension.isAllowedIncognitoAccess(isAllowedIncognito => {
+      if(isAllowedIncognito)
+        db.set({ [info.linkUrl]: true });
+      else
+        this.openHelpPage()
+    })
   };
 }
 

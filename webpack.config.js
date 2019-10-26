@@ -33,7 +33,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx",".css"]
+    extensions: ["*", ".js", ".jsx",".css",".json"]
   },
   output: {
     path: __dirname + "/dist",
