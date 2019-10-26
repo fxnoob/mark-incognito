@@ -18,6 +18,11 @@ class ChromeApi {
     });
   }
 
+  /**
+   * Create incognito window
+   *
+   * @memberof ChromeApi
+   */
   createIncognitoWindow = () => {
     return new Promise((resolve, reject) => {
       chrome.windows.create({ focused: true, incognito: true }, win => {
@@ -26,6 +31,12 @@ class ChromeApi {
     });
   };
 
+  /**
+   * Get window information
+   *
+   *@param {Number} window id
+   * @memberof ChromeApi
+   */
   getWindow = (winId) => {
     return new Promise((resolve, reject)=> {
       chrome.windows.get(winId, (info) => {
@@ -34,12 +45,24 @@ class ChromeApi {
     });
   }
 
+  /**
+   * Callback of chrome.windows.onRemoved
+   *
+   *@param {Number} window id
+   * @memberof ChromeApi
+   */
   onIncognitoWindowClosed = winId => {
     if (this.win) {
       if (this.win.id === winId) this.win = false;
     }
   };
 
+  /**
+   * Create new tab in incognito window
+   *
+   *@param {Object}
+   * @memberof ChromeApi
+   */
   createIncognitoTab = async obj => {
     if (!this.win) this.win = await this.createIncognitoWindow();
     chrome.windows.update(this.win.id, {focused: true});

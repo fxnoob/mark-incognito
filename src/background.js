@@ -19,6 +19,11 @@ class Main extends ChromeApi {
     this.initContextMenu();
   }
 
+  /**
+   * extension icon click handler:- opens option-page to show listing of marked urls.
+   *
+   * @memberof Main
+   */
   onIconClick() {
     chrome.browserAction.onClicked.addListener(tab => {
       this.openHelpPage();
@@ -82,6 +87,11 @@ class Main extends ChromeApi {
     })
   }
 
+  /**
+   * Context menu option initialization
+   *
+   * @memberof Main
+   */
   initContextMenu = () => {
     if (this.ctxMenuId) return;
     this.ctxMenuId = chrome.contextMenus.create({
@@ -91,6 +101,11 @@ class Main extends ChromeApi {
     });
   };
 
+  /**
+   * Context menu option click handler
+   *
+   * @memberof Main
+   */
   onContextMenuClick = (info, tab) => {
     db.set({ [info.linkUrl]: true });
     console.log(info.linkUrl);

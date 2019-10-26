@@ -47,7 +47,7 @@ export default class Db {
   /**
    * Get a value from storage
    *
-   * @param {(string[]|string)} params Array of or single key
+   * @param {...*} params
    * @returns {Promise}
    * @memberof Db
    */
@@ -67,9 +67,12 @@ export default class Db {
     });
   }
 
-  /*
-  * get all data
-  * */
+  /**
+   * get all (key/value)s from storage
+   *
+   * @returns {Promise}
+   * @memberof Db
+   */
   getAll = () => {
     return new Promise((resolve,reject) => {
       try {
