@@ -64,20 +64,31 @@ class ChromeApi {
    * @memberof ChromeApi
    */
   createIncognitoTab = async obj => {
-    if (!this.win) this.win = await this.createIncognitoWindow();
+    if (!this.win) {
+      this.win = await this.createIncognitoWindow();
+      const tab = await this.getActiveTab(this.win.id);
+      chrome.tabs.update(tab.id, obj)
+    } else {
+      chrome.tabs.create({
+        ...obj,
+        selected: true,
+        active: true,
+        windowId: this.win.id
+      });
+    }
     chrome.windows.update(this.win.id, {focused: true});
-    chrome.tabs.create({
-      ...obj,
-      selected: true,
-      active: true,
-      windowId: this.win.id
-    });
     return true;
   };
 
-  getActiveTab = () => {
+  /**
+   * Get active tab of the given window
+   *
+   *@param {Number}
+   * @memberof ChromeApi
+   */
+  getActiveTab = (winId) => {
     return new Promise((resolve, reject) => {
-      chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+      chrome.tabs.query({ windowId: winId, active: true }, tabs => {
         resolve(tabs[0]);
       });
     });

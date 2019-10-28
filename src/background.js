@@ -58,7 +58,9 @@ class Main extends ChromeApi {
     if (!currentWindow.incognito) {
       const isUrlIncognito = await db.get(url);
       if (isUrlIncognito.hasOwnProperty(url)) {
-        callback();
+        chrome.extension.isAllowedIncognitoAccess(isAllowedIncognito => {
+          if (isAllowedIncognito) callback();
+        })
       }
     }
   }
