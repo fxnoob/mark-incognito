@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: lib/chromeApi.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: lib/chromeApi.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Abstraction class to interact with the chrome extension API
+ *
+ * @class ChromeApi
+ */
+class ChromeApi {
+
+  constructor() {
+    this.win = false;
+    chrome.windows.onRemoved.addListener(this.onIncognitoWindowClosed);
+  }
+
+  getTabInfo = (tabId) => {
+    return new Promise(resolve => {
+      chrome.tabs.get(tabId, (tab) => {
+        resolve(tab);
+      });
+    });
+  }
+
+  /**
+   * Create incognito window
+   *
+   * @memberof ChromeApi
+   */
+  createIncognitoWindow = () => {
+    return new Promise((resolve, reject) => {
+      chrome.windows.create({ focused: true, incognito: true }, win => {
+        resolve(win);
+      });
+    });
+  };
+
+  /**
+   * Get window information
+   *
+   *@param {Number} window id
+   * @memberof ChromeApi
+   */
+  getWindow = (winId) => {
+    return new Promise((resolve, reject)=> {
+      chrome.windows.get(winId, (info) => {
+        resolve(info);
+      });
+    });
+  }
+
+  /**
+   * Callback of chrome.windows.onRemoved
+   *
+   *@param {Number} window id
+   * @memberof ChromeApi
+   */
+  onIncognitoWindowClosed = winId => {
+    if (this.win) {
+      if (this.win.id === winId) this.win = false;
+    }
+  };
+
+  /**
+   * Create new tab in incognito window
+   *
+   *@param {Object}
+   * @memberof ChromeApi
+   */
+  createIncognitoTab = async obj => {
+    if (!this.win) {
+      this.win = await this.createIncognitoWindow();
+      const tab = await this.getActiveTab(this.win.id);
+      chrome.tabs.update(tab.id, obj)
+    } else {
+      chrome.tabs.create({
+        ...obj,
+        selected: true,
+        active: true,
+        windowId: this.win.id
+      });
+    }
+    chrome.windows.update(this.win.id, {focused: true});
+    return true;
+  };
+
+  /**
+   * Get active tab of the given window
+   *
+   *@param {Number}
+   * @memberof ChromeApi
+   */
+  getActiveTab = (winId) => {
+    return new Promise((resolve, reject) => {
+      chrome.tabs.query({ windowId: winId, active: true }, tabs => {
+        resolve(tabs[0]);
+      });
+    });
+  };
+
+  sendMessageToActiveTab = async payload => {
+    const tab = await this.getActiveTab();
+    chrome.tabs.sendMessage(tab.id, payload);
+    return true;
+  };
+
+  traverseTabs = callback => {
+    chrome.tabs.query({}, tabs => {
+      callback(tabs);
+    });
+  };
+
+  shiftToLeftTab = () => {
+    this.traverseTabs(tabs => {
+      console.log(tabs, tabs.length, 'tabs info');
+      let activeTabIndex = -1;
+      for (let i = 0; i &lt; tabs.length; i++) {
+        if (tabs[i].active) {
+          activeTabIndex = i;
+          break;
+        }
+      }
+      if (activeTabIndex === 0) {
+        chrome.tabs.update(tabs[tabs.length - 2].id, { highlighted: true });
+      } else {
+        chrome.tabs.update(tabs[activeTabIndex - 1].id, { highlighted: true });
+      }
+      chrome.tabs.update(tabs[activeTabIndex].id, { highlighted: false });
+    });
+  };
+
+  shiftToRightTab = () => {
+    this.traverseTabs(tabs => {
+      let activeTabIndex = -1;
+      for (let i = 0; i &lt; tabs.length; i++) {
+        if (tabs[i].active) {
+          activeTabIndex = i;
+          break;
+        }
+      }
+      if (activeTabIndex === tabs.length - 1) {
+        chrome.tabs.update(tabs[0].id, { highlighted: true });
+      } else {
+        chrome.tabs.update(tabs[activeTabIndex + 1].id, { highlighted: true });
+      }
+      chrome.tabs.update(tabs[activeTabIndex].id, { highlighted: false });
+    });
+  };
+
+  closeActiveTab = callback => {
+    chrome.tabs.query({ active: true }, tabs => {
+      console.log({ tabs });
+      var url = tabs[0].url;
+      const tabId = tabs[0].id;
+      //console.log("URL from main.js", url);
+      chrome.tabs.remove(tabId, callback);
+    });
+  };
+
+  openHelpPage = () => {
+    let helpTabIsOpened = false;
+    let activeTabId = -1;
+    const helpUrl = chrome.runtime.getURL("option.html") + "?page=help";
+    chrome.tabs.query({}, tabs => {
+      for (let i = 0; i &lt; tabs.length; i++) {
+        if (tabs[i].url === helpUrl) {
+          chrome.tabs.update(tabs[i].id, { highlighted: true });
+          helpTabIsOpened = true;
+        }
+        if (tabs[i].active) {
+          activeTabId = tabs[i].id;
+        }
+      }
+      if (!helpTabIsOpened) {
+        chrome.tabs.create({ url: helpUrl }, () => {});
+      }
+      chrome.tabs.update(activeTabId, { highlighted: false });
+    });
+  };
+}
+
+export default ChromeApi;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ChromeApi.html">ChromeApi</a></li><li><a href="Db.html">Db</a></li><li><a href="Main.html">Main</a></li><li><a href="Schema.html">Schema</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Wed Oct 30 2019 14:10:42 GMT+0530 (India Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
