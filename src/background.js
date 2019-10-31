@@ -1,8 +1,10 @@
 import "@babel/polyfill";
 import ChromeApi from "./lib/chromeApi";
 import Db from "./lib/db";
+import Utils from "./lib/utils";
 
 const db = new Db();
+const utils = new Utils();
 
 /**
  * Main extension functionality
@@ -50,14 +52,16 @@ class Main extends ChromeApi {
    * @memberof Main
    */
   performURLChecks = async (details, callback) => {
-    const { url, tabId } = details
+    const { url, tabId } = details;
+
+    const urlWithoutQueryParameters = utils.urlWithoutQueryParameters(url);
 
     const { windowId } = await this.getTabInfo(tabId);
     const currentWindow = await this.getWindow(windowId);
 
     if (!currentWindow.incognito) {
-      const isUrlIncognito = await db.get(url);
-      if (isUrlIncognito.hasOwnProperty(url)) {
+      const isUrlIncognito = await db.get(urlWithoutQueryParameters);
+      if (isUrlIncognito.hasOwnProperty(urlWithoutQueryParameters)) {
         chrome.extension.isAllowedIncognitoAccess(isAllowedIncognito => {
           if (isAllowedIncognito) callback();
         })
@@ -110,8 +114,10 @@ class Main extends ChromeApi {
    */
   onContextMenuClick = (info, tab) => {
     chrome.extension.isAllowedIncognitoAccess(isAllowedIncognito => {
-      if(isAllowedIncognito)
-        db.set({ [info.linkUrl]: true });
+      if(isAllowedIncognito) {
+        let url = utils.urlWithoutQueryParameters(info.linkUrl);
+        db.set({ [url]: true });
+      }
       else
         this.openHelpPage()
     })
