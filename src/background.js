@@ -54,14 +54,14 @@ class Main extends ChromeApi {
   performURLChecks = async (details, callback) => {
     const { url, tabId } = details;
 
-    const modifiedUrl = utils.urlWithoutQueryParameters(url);
+    const urlWithoutQueryParameters = utils.urlWithoutQueryParameters(url);
 
     const { windowId } = await this.getTabInfo(tabId);
     const currentWindow = await this.getWindow(windowId);
 
     if (!currentWindow.incognito) {
-      const isUrlIncognito = await db.get(modifiedUrl);
-      if (isUrlIncognito.hasOwnProperty(modifiedUrl)) {
+      const isUrlIncognito = await db.get(urlWithoutQueryParameters);
+      if (isUrlIncognito.hasOwnProperty(urlWithoutQueryParameters)) {
         chrome.extension.isAllowedIncognitoAccess(isAllowedIncognito => {
           if (isAllowedIncognito) callback();
         })
