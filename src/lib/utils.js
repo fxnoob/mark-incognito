@@ -1,7 +1,13 @@
+/**
+ * Abstraction class to provide helper functions for core functionalities
+ *
+ * @class Utils
+ */
 export default class Utils {
   /**
-   * extension helper:- function takes url as and input and return url after removing query parameteres.
+   * Removes query parameters from url
    *
+   *@param {String} url
    * @memberof Utils
    */
   urlWithoutQueryParameters(url) {
