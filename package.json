@@ -7,10 +7,10 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev": "webpack --watch --progress --colors --config webpack.config.js --mode=development",
-    "test": "webpack --progress --colors --config webpack.config.js --mode=production",
     "jsdoc": "./node_modules/.bin/jsdoc src -r",
     "deploy_jsdoc": "yarn jsdoc &&  gh-pages -d out",
-    "build": "webpack -p --mode production"
+    "build": "webpack -p --mode production",
+    "test": "prettier --check src/**/*.js && yarn build"
   },
   "husky": {
     "hooks": {

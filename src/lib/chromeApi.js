@@ -4,7 +4,6 @@
  * @class ChromeApi
  */
 class ChromeApi {
-
   constructor() {
     this.win = false;
     chrome.windows.onRemoved.addListener(this.onIncognitoWindowClosed);
@@ -17,13 +16,13 @@ class ChromeApi {
    * @param {Number} tab id
    * @memberof ChromeApi
    */
-  getTabInfo = (tabId) => {
+  getTabInfo = tabId => {
     return new Promise(resolve => {
-      chrome.tabs.get(tabId, (tab) => {
+      chrome.tabs.get(tabId, tab => {
         resolve(tab);
       });
     });
-  }
+  };
 
   /**
    * Create incognito window
@@ -46,13 +45,13 @@ class ChromeApi {
    *@param {Number} window id
    * @memberof ChromeApi
    */
-  getWindow = (winId) => {
-    return new Promise((resolve, reject)=> {
-      chrome.windows.get(winId, (info) => {
+  getWindow = winId => {
+    return new Promise((resolve, reject) => {
+      chrome.windows.get(winId, info => {
         resolve(info);
       });
     });
-  }
+  };
 
   /**
    * Callback of chrome.windows.onRemoved
@@ -79,7 +78,7 @@ class ChromeApi {
     if (!this.win) {
       this.win = await this.createIncognitoWindow();
       const tab = await this.getActiveTab(this.win.id);
-      chrome.tabs.update(tab.id, obj)
+      chrome.tabs.update(tab.id, obj);
     } else {
       chrome.tabs.create({
         ...obj,
@@ -88,7 +87,7 @@ class ChromeApi {
         windowId: this.win.id
       });
     }
-    chrome.windows.update(this.win.id, {focused: true});
+    chrome.windows.update(this.win.id, { focused: true });
     return true;
   };
 
@@ -99,7 +98,7 @@ class ChromeApi {
    *@param {Number}
    * @memberof ChromeApi
    */
-  getActiveTab = (winId) => {
+  getActiveTab = winId => {
     return new Promise((resolve, reject) => {
       chrome.tabs.query({ windowId: winId, active: true }, tabs => {
         resolve(tabs[0]);
@@ -121,7 +120,7 @@ class ChromeApi {
 
   shiftToLeftTab = () => {
     this.traverseTabs(tabs => {
-      console.log(tabs, tabs.length, 'tabs info');
+      console.log(tabs, tabs.length, "tabs info");
       let activeTabIndex = -1;
       for (let i = 0; i < tabs.length; i++) {
         if (tabs[i].active) {

@@ -74,7 +74,7 @@ export default class Db {
    * @memberof Db
    */
   getAll = () => {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
       try {
         chrome.storage.local.get(null, items => {
           if (items === undefined) {
@@ -86,8 +86,8 @@ export default class Db {
       } catch (e) {
         reject(e);
       }
-    })
-  }
+    });
+  };
 
   /**
    * Removes a value from storage
