@@ -7,10 +7,10 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "dev": "webpack --watch --progress --colors --config webpack.config.js --mode=development",
-    "test": "webpack --progress --colors --config webpack.config.js --mode=production",
     "jsdoc": "./node_modules/.bin/jsdoc src -r",
     "deploy_jsdoc": "yarn jsdoc &&  gh-pages -d out",
-    "build": "webpack -p --mode production"
+    "build": "webpack -p --mode production",
+    "test": "prettier --check src/**/*.js && yarn build"
   },
   "husky": {
     "hooks": {
@@ -31,9 +31,11 @@
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.4",
     "file-loader": "^4.2.0",
+    "husky": "^3.0.9",
     "image-webpack-loader": "^5.0.0",
     "jsdoc": "~3.6.3",
     "prettier": "1.18.2",
+    "pretty-quick": "^2.0.0",
     "react-hot-loader": "^4.12.10",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
