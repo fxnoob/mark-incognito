@@ -10,6 +10,13 @@ class ChromeApi {
     chrome.windows.onRemoved.addListener(this.onIncognitoWindowClosed);
   }
 
+  /**
+   * Get tab info based on it's tab id
+   *
+   * @method
+   * @param {Number} tab id
+   * @memberof ChromeApi
+   */
   getTabInfo = (tabId) => {
     return new Promise(resolve => {
       chrome.tabs.get(tabId, (tab) => {
@@ -21,6 +28,7 @@ class ChromeApi {
   /**
    * Create incognito window
    *
+   * @method
    * @memberof ChromeApi
    */
   createIncognitoWindow = () => {
@@ -34,6 +42,7 @@ class ChromeApi {
   /**
    * Get window information
    *
+   * @method
    *@param {Number} window id
    * @memberof ChromeApi
    */
@@ -48,6 +57,7 @@ class ChromeApi {
   /**
    * Callback of chrome.windows.onRemoved
    *
+   * @method
    *@param {Number} window id
    * @memberof ChromeApi
    */
@@ -60,7 +70,9 @@ class ChromeApi {
   /**
    * Create new tab in incognito window
    *
-   *@param {Object}
+   * @method
+   *@param {Object} obj Object argument for createIncognitoTab
+   * @param {string} obj.url url for the tab
    * @memberof ChromeApi
    */
   createIncognitoTab = async obj => {
@@ -83,6 +95,7 @@ class ChromeApi {
   /**
    * Get active tab of the given window
    *
+   * @method
    *@param {Number}
    * @memberof ChromeApi
    */
@@ -153,6 +166,12 @@ class ChromeApi {
     });
   };
 
+  /**
+   * Open help page
+   *
+   * @method
+   * @memberof ChromeApi
+   */
   openHelpPage = () => {
     let helpTabIsOpened = false;
     let activeTabId = -1;

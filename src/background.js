@@ -24,14 +24,21 @@ class Main extends ChromeApi {
   /**
    * extension icon click handler:- opens option-page to show listing of marked urls.
    *
+   * @method
    * @memberof Main
    */
-  onIconClick() {
+  onIconClick = () => {
     chrome.browserAction.onClicked.addListener(tab => {
       this.openHelpPage();
     });
   }
 
+  /**
+   * intercept request handler
+   *
+   * @method
+   * @memberof Main
+   */
   interceptRequests = () => {
     let types = ["main_frame"];
 
@@ -47,6 +54,7 @@ class Main extends ChromeApi {
   /**
    * Performs a check on the requested url to see if it marked as Incognito
    *
+   * @method
    * @param {object} details Details object provided by `chrome.webRequest.*` methods
    * @param {function} callback Callback that run if url is marked as Incognito
    * @memberof Main
@@ -72,6 +80,7 @@ class Main extends ChromeApi {
   /**
    * Creates a new tab if a Incognito URL is requested
    *
+   * @method
    * @param {object} details Details object provided by `chrome.webRequest.onBeforeRequest` method
    * @memberof Main
    */
@@ -84,6 +93,7 @@ class Main extends ChromeApi {
   /**
    * Goes back if a Incognito marked URL has been navigated to
    *
+   * @method
    * @param {object} details Details object provided by `chrome.webRequest.onCompleted` method
    * @memberof Main
    */
@@ -96,6 +106,7 @@ class Main extends ChromeApi {
   /**
    * Context menu option initialization
    *
+   * @method
    * @memberof Main
    */
   initContextMenu = () => {
@@ -110,6 +121,9 @@ class Main extends ChromeApi {
   /**
    * Context menu option click handler
    *
+   * @method
+   * @param {Object} info info object
+   * @param {Object} tab tab object
    * @memberof Main
    */
   onContextMenuClick = (info, tab) => {
