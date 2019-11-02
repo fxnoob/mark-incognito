@@ -150,12 +150,20 @@
     
 
     
-        <h3 class="subsection-title">Members</h3>
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
-<h4 class="name" id=".initContextMenu"><span class="type-signature">(static) </span>initContextMenu<span class="type-signature"></span></h4>
 
+    
+
+    
+    <h4 class="name" id=".initContextMenu"><span class="type-signature">(static) </span>initContextMenu<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
 
 
 
@@ -169,6 +177,12 @@
 
 
 
+
+
+
+
+
+
 <dl class="details">
 
     
@@ -198,7 +212,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="background.js.html">background.js</a>, <a href="background.js.html#line101">line 101</a>
+        <a href="background.js.html">background.js</a>, <a href="background.js.html#line112">line 112</a>
     </li></ul></dd>
     
 
@@ -214,10 +228,118 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
             
-<h4 class="name" id=".onContextMenuClick"><span class="type-signature">(static) </span>onContextMenuClick<span class="type-signature"></span></h4>
 
+    
+
+    
+    <h4 class="name" id=".interceptRequests"><span class="type-signature">(static) </span>interceptRequests<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    intercept request handler
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="background.js.html">background.js</a>, <a href="background.js.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".onContextMenuClick"><span class="type-signature">(static) </span>onContextMenuClick<span class="signature">(info, tab)</span><span class="type-signature"></span></h4>
+    
+
+    
 
 
 
@@ -231,124 +353,78 @@
 
 
 
-<dl class="details">
 
+
+    <h5>Parameters:</h5>
     
 
-    
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="background.js.html">background.js</a>, <a href="background.js.html#line115">line 115</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
+        <th>Type</th>
 
         
-            
-<h4 class="name" id=".performURLChecks"><span class="type-signature">(static) </span>performURLChecks<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Performs a check on the requested url to see if it marked as Incognito
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="background.js.html">background.js</a>, <a href="background.js.html#line54">line 54</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
 
         
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<h4 class="name" id=".redirect"><span class="type-signature">(static) </span>redirect<span class="type-signature"></span></h4>
+                <td class="name"><code>info</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
 
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">info object</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tab</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
 
 
-<div class="description">
-    Creates a new tab if a Incognito URL is requested
-</div>
+            
+            </td>
 
+            
+
+            
+
+            <td class="description last">tab object</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -384,7 +460,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="background.js.html">background.js</a>, <a href="background.js.html#line78">line 78</a>
+        <a href="background.js.html">background.js</a>, <a href="background.js.html#line129">line 129</a>
     </li></ul></dd>
     
 
@@ -400,16 +476,6 @@
 
 
 
-        
-            
-<h4 class="name" id=".redirectOnComplete"><span class="type-signature">(static) </span>redirectOnComplete<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Goes back if a Incognito marked URL has been navigated to
-</div>
 
 
 
@@ -417,56 +483,12 @@
 
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="background.js.html">background.js</a>, <a href="background.js.html#line90">line 90</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
 
 
 
 
 
 
-        
-    
-
-    
-        <h3 class="subsection-title">Methods</h3>
 
         
             
@@ -474,7 +496,7 @@
     
 
     
-    <h4 class="name" id="onIconClick"><span class="type-signature"></span>onIconClick<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".onIconClick"><span class="type-signature">(static) </span>onIconClick<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -526,7 +548,441 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="background.js.html">background.js</a>, <a href="background.js.html#line29">line 29</a>
+        <a href="background.js.html">background.js</a>, <a href="background.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".performURLChecks"><span class="type-signature">(static) </span>performURLChecks<span class="signature">(details, callback)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Performs a check on the requested url to see if it marked as Incognito
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>details</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Details object provided by `chrome.webRequest.*` methods</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Callback that run if url is marked as Incognito</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="background.js.html">background.js</a>, <a href="background.js.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".redirect"><span class="type-signature">(static) </span>redirect<span class="signature">(details)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Creates a new tab if a Incognito URL is requested
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>details</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Details object provided by `chrome.webRequest.onBeforeRequest` method</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="background.js.html">background.js</a>, <a href="background.js.html#line87">line 87</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".redirectOnComplete"><span class="type-signature">(static) </span>redirectOnComplete<span class="signature">(details)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Goes back if a Incognito marked URL has been navigated to
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>details</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Details object provided by `chrome.webRequest.onCompleted` method</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="background.js.html">background.js</a>, <a href="background.js.html#line100">line 100</a>
     </li></ul></dd>
     
 
@@ -578,7 +1034,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sat Nov 02 2019 19:43:21 GMT+0530 (India Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Sat Nov 02 2019 22:36:00 GMT+0530 (India Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
