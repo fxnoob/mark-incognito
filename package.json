@@ -17,7 +17,7 @@
     "prettier": "yarn prettier_check_src && yarn prettier_check_popup && yarn prettier_check_option && yarn prettier_check_content",
     "prod": "yarn prettier && yarn build && mocha tests/index.js ",
     "test:option": "mocha tests/index.js",
-    "test": "yarn prettier && yarn build && yarn test:option"
+    "test": "yarn prettier && yarn build"
   },
   "husky": {
     "hooks": {
