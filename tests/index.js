@@ -4,6 +4,8 @@ const assert = require("assert");
 
 const extensionID = "jlcjobnhmlbigainbeahgmnbbcikbkba";
 const extensionPath = path.join(__dirname, "../dist");
+const extensionOptionHtml = "option.html";
+const extPage = `chrome-extension://${extensionID}/${extensionOptionHtml}`;
 let extensionPage = null;
 let browser = null;
 
@@ -18,10 +20,7 @@ async function boot() {
     ]
   });
 
-  const extensionPopupHtml = "option.html";
-
   extensionPage = await browser.newPage();
-  const extPage = `chrome-extension://${extensionID}/${extensionPopupHtml}`;
   await extensionPage.goto(extPage);
 }
 
@@ -38,6 +37,25 @@ describe("Extension UI Testing", function() {
         document.querySelector("h1").textContent.trim()
       );
       assert.equal(extH1, h1);
+    });
+    it("render table ", async () => {
+      await extensionPage.goto(`chrome://extensions/?id=${extensionID}`);
+      extensionPage.evaluate(() =>
+        document
+          .querySelector("body > extensions-manager")
+          .shadowRoot.querySelector("#viewManager > extensions-detail-view")
+          .shadowRoot.querySelector("#allow-incognito")
+          .shadowRoot.querySelector("#crToggle")
+          .click()
+      );
+      await extensionPage.goto(
+        `chrome-extension://${extensionID}/${extensionOptionHtml}`
+      );
+      const h3 = "Mark Incognito";
+      const extH3 = await extensionPage.evaluate(() =>
+        document.querySelector("h3").textContent.trim()
+      );
+      assert.equal(extH3, h3);
     });
   });
 
