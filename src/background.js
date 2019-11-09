@@ -31,7 +31,7 @@ class Main extends ChromeApi {
     chrome.browserAction.onClicked.addListener(tab => {
       this.openHelpPage();
     });
-  }
+  };
 
   /**
    * intercept request handler
@@ -47,8 +47,12 @@ class Main extends ChromeApi {
       types: types
     };
 
-    chrome.webRequest.onBeforeRequest.addListener(this.redirect, filter, ["blocking"]);
-    chrome.webRequest.onCompleted.addListener(this.redirectOnComplete, filter, ["responseHeaders"])
+    chrome.webRequest.onBeforeRequest.addListener(this.redirect, filter, [
+      "blocking"
+    ]);
+    chrome.webRequest.onCompleted.addListener(this.redirectOnComplete, filter, [
+      "responseHeaders"
+    ]);
   };
 
   /**
@@ -72,10 +76,10 @@ class Main extends ChromeApi {
       if (isUrlIncognito.hasOwnProperty(urlWithoutQueryParameters)) {
         chrome.extension.isAllowedIncognitoAccess(isAllowedIncognito => {
           if (isAllowedIncognito) callback();
-        })
+        });
       }
     }
-  }
+  };
 
   /**
    * Creates a new tab if a Incognito URL is requested
@@ -87,7 +91,7 @@ class Main extends ChromeApi {
   redirect = async details => {
     this.performURLChecks(details, async () => {
       await this.createIncognitoTab({ url: details.url });
-    })
+    });
   };
 
   /**
@@ -100,8 +104,8 @@ class Main extends ChromeApi {
   redirectOnComplete = async details => {
     this.performURLChecks(details, () => {
       chrome.tabs.goBack(details.tabId);
-    })
-  }
+    });
+  };
 
   /**
    * Context menu option initialization
@@ -128,13 +132,11 @@ class Main extends ChromeApi {
    */
   onContextMenuClick = (info, tab) => {
     chrome.extension.isAllowedIncognitoAccess(isAllowedIncognito => {
-      if(isAllowedIncognito) {
+      if (isAllowedIncognito) {
         let url = utils.urlWithoutQueryParameters(info.linkUrl);
         db.set({ [url]: true });
-      }
-      else
-        this.openHelpPage()
-    })
+      } else this.openHelpPage();
+    });
   };
 }
 
