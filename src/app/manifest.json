@@ -1,5 +1,6 @@
 {
   "name": "Mark Incognito",
+  "key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjIG6bvSco0OeCiJIrPEw\nI9dLhsxidx3csMFycnT0hweA/VNA/1t/ARzzZO31Gn90VlyRfKtiTHxl0xlp0aGi\nvOAcjodFgaKRd9Y53BXDjpwFUCsehdjYiz6rI2QWQ4Ug0SlP/13N+loSgWYbzUeI\nXszi2BXpzeOpxmu+2jz4of/yaGz7bqPmZNiIdX90EDmsjPiW0vxBz3ydSPIgidLZ\n/b1yM+gSOKwZohrUhxnp+Dij44XPFZiOFZIvKAB2FzoP0gAVPFie+ZtSbwx0GKOD\n0X+vDsj4WLBkdEsHL6+pIq2zHrk3gjz6w0GBjpC8oXsRT25RXZMUgiun4KVQh93m\njwIDAQAB\n-----END PUBLIC KEY-----\n",
   "version": "0.0.4",
   "manifest_version": 2,
   "description": "open any url in incognito by default",
