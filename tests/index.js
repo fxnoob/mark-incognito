@@ -61,6 +61,6 @@ describe("Extension UI Testing", function() {
   });
 
   after(async function() {
-    //await browser.close();
+    await browser.close();
   });
 });
