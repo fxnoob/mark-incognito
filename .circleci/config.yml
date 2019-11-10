@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8.12.0-browsers
+      - image: circleci/node:10.9.0-browsers
 
     working_directory: ~/repo
 
@@ -25,4 +25,4 @@ jobs:
 
       # build the extension if required
       # Run our test suite
-      - run: yarn test:option
+      - run: yarn prod

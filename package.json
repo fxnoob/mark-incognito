@@ -15,8 +15,8 @@
     "prettier_check_option": "prettier --check src/**/*.{js,jsx}",
     "prettier_check_content": "prettier --check src/**/*.{js,jsx}",
     "prettier": "yarn prettier_check_src && yarn prettier_check_popup && yarn prettier_check_option && yarn prettier_check_content",
-    "prod": "yarn prettier && yarn build && mocha tests/index.js ",
-    "test:option": "mocha tests/index.js",
+    "prod": "yarn prettier && yarn build && yarn test:option",
+    "test:option": "mocha --timeout 10000 tests/index.js",
     "test": "yarn prettier && yarn build"
   },
   "husky": {
@@ -35,6 +35,7 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
+    "assert": "^2.0.0",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.0.5",
     "file-loader": "^4.2.0",
@@ -44,6 +45,7 @@
     "mocha": "^6.2.2",
     "prettier": "1.18.2",
     "pretty-quick": "^2.0.1",
+    "puppeteer": "^2.0.0",
     "react-hot-loader": "^4.12.16",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.10",

@@ -41,7 +41,7 @@ describe("Extension UI Testing", function() {
     });
     it("render table ", async () => {
       await extensionPage.goto(`chrome://extensions/?id=${extensionID}`);
-      await extensionPage.evaluate(() =>
+      extensionPage.evaluate(() =>
         document
           .querySelector("body > extensions-manager")
           .shadowRoot.querySelector("#viewManager > extensions-detail-view")
@@ -61,6 +61,6 @@ describe("Extension UI Testing", function() {
   });
 
   after(async function() {
-    //await browser.close();
+    await browser.close();
   });
 });
