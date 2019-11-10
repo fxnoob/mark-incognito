@@ -11,6 +11,7 @@ let browser = null;
 
 async function boot() {
   browser = await puppeteer.launch({
+    // slowMo: 250,
     headless: false, // extension are allowed only in head-full mode
     args: [
       `--disable-extensions-except=${extensionPath}`,
@@ -40,7 +41,7 @@ describe("Extension UI Testing", function() {
     });
     it("render table ", async () => {
       await extensionPage.goto(`chrome://extensions/?id=${extensionID}`);
-      extensionPage.evaluate(() =>
+      await extensionPage.evaluate(() =>
         document
           .querySelector("body > extensions-manager")
           .shadowRoot.querySelector("#viewManager > extensions-detail-view")
@@ -60,6 +61,6 @@ describe("Extension UI Testing", function() {
   });
 
   after(async function() {
-    await browser.close();
+    //await browser.close();
   });
 });
