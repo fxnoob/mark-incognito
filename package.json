@@ -15,7 +15,7 @@
     "prettier_check_option": "prettier --check src/**/*.{js,jsx}",
     "prettier_check_content": "prettier --check src/**/*.{js,jsx}",
     "prettier": "yarn prettier_check_src && yarn prettier_check_popup && yarn prettier_check_option && yarn prettier_check_content",
-    "prod": "yarn prettier && yarn build && mocha tests/index.js ",
+    "prod": "yarn prettier && yarn build && yarn test:option",
     "test:option": "mocha --timeout 10000 tests/index.js",
     "test": "yarn prettier && yarn build"
   },

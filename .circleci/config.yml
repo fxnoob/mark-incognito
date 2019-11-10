@@ -25,4 +25,4 @@ jobs:
 
       # build the extension if required
       # Run our test suite
-      - run: yarn test:option
+      - run: yarn prod
