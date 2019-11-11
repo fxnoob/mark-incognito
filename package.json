@@ -43,7 +43,7 @@
     "image-webpack-loader": "^6.0.0",
     "jsdoc": "~3.6.3",
     "mocha": "^6.2.2",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "pretty-quick": "^2.0.1",
     "puppeteer": "^2.0.0",
     "react-hot-loader": "^4.12.16",
