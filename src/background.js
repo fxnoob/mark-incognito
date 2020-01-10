@@ -90,6 +90,8 @@ class Main extends ChromeApi {
    */
   redirect = async details => {
     this.performURLChecks(details, async () => {
+      // remove url from history
+      this.removeFromHistory({ url: details.url });
       await this.createIncognitoTab({ url: details.url });
     });
   };

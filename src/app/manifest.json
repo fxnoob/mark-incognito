@@ -17,7 +17,8 @@
     "webRequestBlocking",
     "tabs",
     "storage",
-    "contextMenus"
+    "contextMenus",
+    "history"
   ],
   "incognito": "spanning",
   "browser_action": {
