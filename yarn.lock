@@ -796,18 +796,18 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@emotion/hash@^0.7.1":
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.7.3.tgz#a166882c81c0c6040975dd30df24fae8549bd96f"
-  integrity sha512-14ZVlsB9akwvydAdaEnVnvqu6J2P6ySv39hYyl/aoB6w/V+bXX0tay8cF6paqbgZsN2n5Xh15uF4pE+GvE+itw==
+"@emotion/hash@^0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.7.4.tgz#f14932887422c9056b15a8d222a9074a7dfa2831"
+  integrity sha512-fxfMSBMX3tlIbKUdtGKxqB1fyrH6gVrX39Gsv3y8lRYKUqlgDt3UMqQyGnR1bQMa2B8aGnhLZokZgg8vT0Le+A==
 
-"@material-ui/core@^4.8.0":
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.8.0.tgz#8fb4f4df2b35e3e781b1eec17d4aaf388edf3099"
-  integrity sha512-ODyvWlDOP0D3tU32wVlYRNrdS+LeJxB3xJbXdDxq6gnG4JhKk79+ylP0cImjPBI2yEZw0hcYHWFZOGD+0R1X4g==
+"@material-ui/core@^4.8.3":
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.8.3.tgz#858f758b26d8417eb39310f07fb9d7a72beb8b03"
+  integrity sha512-ZJbfJQmkuZCSQTf0nzpfZwizmDdCq8ruZxnPNFnhoKDqgJpMvV8TJRi8vdI9ls1tMuTqxlhyhw8556fxOpWpFQ==
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@material-ui/styles" "^4.7.1"
+    "@material-ui/styles" "^4.8.2"
     "@material-ui/system" "^4.7.1"
     "@material-ui/types" "^4.1.1"
     "@material-ui/utils" "^4.7.1"
@@ -828,13 +828,13 @@
   dependencies:
     "@babel/runtime" "^7.4.4"
 
-"@material-ui/styles@^4.7.1":
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.7.1.tgz#48fa70f06441c35e301a9c4b6c825526a97b7a29"
-  integrity sha512-BBfxVThaPrglqHmKtSdrZJxnbFGJqKdZ5ZvDarj3HsmkteGCXsP1ohrDi5TWoa5JEJFo9S6q6NywqsENZn9rZA==
+"@material-ui/styles@^4.8.2":
+  version "4.8.2"
+  resolved "https://registry.yarnpkg.com/@material-ui/styles/-/styles-4.8.2.tgz#841acbc4314accbe82a45cb1feb758d47448c802"
+  integrity sha512-r5U+93pkpwQOmHTmwyn2sqTio6PHd873xvSHiKP6fdybAXXX6CZgVvh3W8saZNbYr/QXsS8OHmFv7sYJLt5Yfg==
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@emotion/hash" "^0.7.1"
+    "@emotion/hash" "^0.7.4"
     "@material-ui/types" "^4.1.1"
     "@material-ui/utils" "^4.7.1"
     clsx "^1.0.2"
