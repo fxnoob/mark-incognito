@@ -1,8 +1,10 @@
 const path = require("path");
 const puppeteer = require("puppeteer");
 const assert = require("assert");
+const Constants = require("../contants");
+const Utils = require("./util");
 
-const extensionID = "jlcjobnhmlbigainbeahgmnbbcikbkba";
+const extensionID = Constants.EXTENSION_ID;
 const extensionPath = path.join(__dirname, "../dist");
 const extensionOptionHtml = "option.html";
 const extPage = `chrome-extension://${extensionID}/${extensionOptionHtml}`;
@@ -39,7 +41,7 @@ describe("Extension UI Testing", function() {
       );
       assert.equal(extH1, h1);
     });
-    it("render table ", async () => {
+    it("show option ui after enabling extension in incognito", async () => {
       await extensionPage.goto(`chrome://extensions/?id=${extensionID}`);
       extensionPage.evaluate(() =>
         document
@@ -49,13 +51,18 @@ describe("Extension UI Testing", function() {
           .shadowRoot.querySelector("#crToggle")
           .click()
       );
+      await Utils.sleep(2000);
       await extensionPage.goto(
         `chrome-extension://${extensionID}/${extensionOptionHtml}`
       );
       const h3 = "Mark Incognito";
-      const extH3 = await extensionPage.evaluate(() =>
-        document.querySelector("h3").textContent.trim()
-      );
+      const headingID = `#${Constants.OPTION_SCRIPT_HOST_ID} > div > div > header > div > h6`;
+      await extensionPage.waitFor(headingID);
+      console.log({ headingID });
+      const extH3 = await extensionPage.evaluate(headingID => {
+        return document.querySelector(headingID).textContent.trim();
+      }, headingID);
+      console.log({ extH3 });
       assert.equal(extH3, h3);
     });
   });
