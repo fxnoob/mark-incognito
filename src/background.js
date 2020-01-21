@@ -1,9 +1,10 @@
 import "@babel/polyfill";
 import ChromeApi from "./lib/chromeApi";
-import Db from "./lib/db";
+import Db, { Schema } from "./lib/db";
 import Utils from "./lib/utils";
 
 const db = new Db();
+const schema = new Schema();
 const utils = new Utils();
 
 /**
@@ -16,11 +17,35 @@ class Main extends ChromeApi {
   constructor() {
     super();
     this.ctxMenuId = null;
+    this.init();
+  }
+
+  /**
+   * Initialization of init methods
+   * @method
+   * @memberOf Main
+   */
+  init = async () => {
+    await this.initDb();
     this.onIconClick();
     this.interceptRequests();
     this.initContextMenu();
-  }
+  };
 
+  /**
+   * initialize default settings
+   * @method
+   * @memberof Main
+   */
+  initDb = async () => {
+    const res = await db.get("loadedFirstTime");
+    if (!res.hasOwnProperty("loadedFirstTime")) {
+      await db.set({
+        loadedFirstTime: true,
+        ...schema.data
+      });
+    }
+  };
   /**
    * extension icon click handler:- opens option-page to show listing of marked urls.
    *
@@ -102,8 +127,12 @@ class Main extends ChromeApi {
    * @memberof Main
    */
   redirectOnComplete = async details => {
-    this.performURLChecks(details, () => {
+    this.performURLChecks(details, async () => {
       chrome.tabs.goBack(details.tabId);
+      const { factorySetting } = await db.get("factory_setting");
+      if (factorySetting.deleteUrlHistory) {
+        this.removeFromHistory(details.url);
+      }
     });
   };
 

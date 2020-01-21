@@ -25,6 +25,18 @@ class ChromeApi {
   };
 
   /**
+   *
+   *Remove url from history
+   *
+   *@method
+   *@param {string} url
+   *@memberof ChromeApi
+   */
+  removeFromHistory = url => {
+    chrome.history.deleteUrl({ url: url });
+  };
+
+  /**
    * Create incognito window
    *
    * @method
