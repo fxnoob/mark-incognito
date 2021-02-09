@@ -56,7 +56,7 @@
     "@babel/runtime": "^7.7.6",
     "@material-ui/core": "^4.8.0",
     "@material-ui/icons": "^4.2.1",
-    "css-loader": "^3.4.0",
+    "css-loader": "^5.0.2",
     "gh-pages": "^2.1.1",
     "lottie-react-web": "^2.1.4",
     "react": "^16.12.0",
